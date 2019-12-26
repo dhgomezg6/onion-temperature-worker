@@ -1,0 +1,23 @@
+{
+  "name": "onion-temperature-worker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhgomezg6/onion-temperature-worker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dhgomezg6/onion-temperature-worker/issues"
+  },
+  "homepage": "https://github.com/dhgomezg6/onion-temperature-worker#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "node-cron": "^2.0.3"
+  }
+}
