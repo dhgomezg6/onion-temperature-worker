@@ -12,11 +12,11 @@ cron.schedule('* * * * *', () => {
             let temperature_value = stdout.match(/(?<=temperature:\s).\S+/);
             let humidity_value = stdout.match(/(?<=temperature:\s).\S+/);
             
-            console.log(`Temperature: ${temperature_value[0]} , Humidity:${humidity_value[0]}`);
+            console.log(`Temperature: ${temperature_value} , Humidity:${humidity_value}`);
             
             axios.post('https://radiant-bayou-94606.herokuapp.com/temperature/insert', {
-                temperature: temperature_value,
-                humidity: humidity_value
+                temperature: temperature_value[0],
+                humidity: humidity_value[0]
             })
             .then((res) => {
                 console.log(`statusCode: ${res.statusCode}`)
