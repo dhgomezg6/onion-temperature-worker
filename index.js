@@ -4,17 +4,19 @@ const axios = require('axios')
 
 cron.schedule('* * * * *', () => {
 
-    exec('ls | grep js', (err, stdout, stderr) => {
+    exec('dht-sensor 18 DHT22', (err, stdout, stderr) => {
         if (err) {
             //some err occurred
             console.error(err)
         } else {
-            // the *entire* stdout and stderr (buffered)
-            console.log(`stdout: ${stdout}`);
+            let temperature_value = stdout.match(/(?<=temperature:\s).\S+/);
+            let humidity_value = stdout.match(/(?<=temperature:\s).\S+/);
             
-            axios.post('http://localhost:3000/temperature/insert', {
-                temperature: 20,
-                humidity: 20
+            console.log(`Temperature: ${temperature_value} , Humidity:${humidity_value}`);
+            
+            axios.post('https://radiant-bayou-94606.herokuapp.com/temperature/insert', {
+                temperature: temperature_value,
+                humidity: humidity_value
             })
             .then((res) => {
                 console.log(`statusCode: ${res.statusCode}`)
