@@ -19,8 +19,7 @@ cron.schedule('* * * * *', () => {
                 humidity: humidity_value[0]
             })
             .then((res) => {
-                console.log(`statusCode: ${res.statusCode}`)
-                console.log(res)
+                console.log(`Temp: ${temperature_value[0]} Hum: ${humidity_value[0]} - ${res.statusCode}`)
             })
             .catch((error) => {
                 console.error(error)
